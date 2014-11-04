@@ -1,0 +1,30 @@
+
+How to use:
+
+  1) Download the MT Software Suite and install it on a Windows machine (you may skip this step and use default sensor configuration), then download the MT SDK for Linux and install it on a Linux machine (this should be the machine that ROS is installed on).
+
+Here is the software website: http://www.xsens.com/en/mt-software-suite
+
+  2) Follow the instructions in the MT SDK for Linux to install the software and make sure the examples run correctly with the sensor. Here is a summary of the installation procedure.
+
+    (a) Unpack the MT SDK.
+    (b) Go to /shared_object folder, put the license number in the “serialkey.h” file, then “make” and “sudo make system_install”.
+    (c) Connect the sensor to the Linux machine and run one of the examples in /shared_object folder.
+
+  (3) Connect the sensor to the Windows machine and open the MT Manager. Click the button on top of the screen for “output configuration options”, make sure “Turn Rate” and “Acceleration” are checked. You can also change frequency on the same page. If you skip this step, the sensor is configured to give orientation only by default.
+
+  (4) Clone this driver from github to a ROS workspace. Go to the cloned folder and find the “src/serialkey.h” file, put your license number in it and use “rosmake” to build it.
+  
+  (5) You may need to install the kernel available at https://github.com/xsens/xsens_mt
+  (6) Verify if the usb device was recognized by using the following command:
+   
+   >> ls /dev/ttyUSB0
+  
+	you may need to replace the 0 for another number if there are more usb devices in your computer
+	
+  (7)Once you found the MTi-G-700 address in /dev, you have to enable executioon using the command
+   sudo chmod 777 /dev/ttyUSB0
+   here, again, the 0 may change depending on your setup
+  
+  (5) Roslaunch the “receive_xsens.launch” file in /launch folder. The driver will publish sensor_msgs/Imu typed messages named /imu/data.
+

@@ -1,0 +1,21 @@
+<launch>
+	<node pkg="receive_xsens" type="receive_xsens_node" name="receive_xsens" output="screen" />
+		<param name="orientation_enabled" value="true"/>
+		<param name="orientation_frequency" value="1"/>
+		<param name="gps_enabled" value="true"/>
+		<param name="gps_frequency" value="1"/>
+		<param name="temperature_enabled" value="true"/>
+		<param name="temperature_frequency" value="1"/>
+		<param name="acceleration_enabled" value="true"/>
+		<param name="acceleration_frequency" value="1"/>
+		<param name="pressure_enabled" value="true"/>
+		<param name="pressure_frequency" value="1"/>
+		<param name="magnetic_enabled" value="true"/>
+		<param name="magnetic_frequency" value="1"/>
+		<param name="altitude_enabled" value="true"/>
+		<param name="altitude_frequency" value="1"/>
+		<param name="velocity_enabled" value="true"/>
+		<param name="velocity_frequency" value="1"/>
+		<param name="gyroscope_enabled" value="true"/>
+		<param name="gyroscope_frequency" value="300"/>
+</launch>

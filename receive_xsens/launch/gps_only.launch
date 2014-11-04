@@ -1,0 +1,38 @@
+<launch>
+	<node pkg="receive_xsens" type="receive_xsens_node" name="receive_xsens" output="screen" />
+		<param name="orientation_enabled" value="false"/>
+		<!-- Orientation Max Freq = 400-->
+		<param name="orientation_frequency" value="400"/>
+
+		<param name="gps_enabled" value="true"/>
+		<!-- GPS Max Freq = 400-->
+		<param name="gps_frequency" value="400"/>
+
+		<param name="temperature_enabled" value="false"/>
+		<!-- Temperature Max Freq = 400-->
+		<param name="temperature_frequency" value="1"/>
+
+		<param name="acceleration_enabled" value="false"/>
+		<!-- Acceleration Max Freq = 400-->
+		<param name="acceleration_frequency" value="400"/>
+
+		<param name="pressure_enabled" value="false"/>
+		<!-- Pressure Max Freq = 50-->
+		<param name="pressure_frequency" value="50"/>
+
+		<param name="magnetic_enabled" value="false"/>
+		<!-- Magnetic Max Freq = 400-->
+		<param name="magnetic_frequency" value="100"/>
+		
+		<param name="altitude_enabled" value="false"/>
+		<!-- Altitude Max Freq = 400-->
+		<param name="altitude_frequency" value="400"/>
+
+		<param name="velocity_enabled" value="false"/>
+		<!-- Velocity Max Freq = 400-->
+		<param name="velocity_frequency" value="400"/>
+
+		<param name="gyroscope_enabled" value="false"/>
+		<!-- Gyroscope Max Freq = 200-->
+		<param name="gyroscope_frequency" value="200"/>
+</launch>

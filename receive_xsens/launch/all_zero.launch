@@ -1,0 +1,34 @@
+<launch>
+	<arg name="frame" default="xsens" />
+	<node pkg="receive_xsens" type="receive_xsens_node" name="receive_xsens" respawn="true">
+		<!-- Error parameters /-->		
+		<param name="roll_error" value="0.2" />
+		<param name="pitch_error" value="0.2" />		
+		<param name="yaw_error" value="1.0" />
+		<param name="acc_noise" value="0.00015" />
+		<param name="gyr_noise" value="0.01" />
+	
+		<!-- Frame Parameter /-->
+		<param name="frame_id" value="$(arg frame)" />		
+
+		<!-- Module Setup Parameters /-->
+		<param name="orientation_enabled" value="true"/>
+		<param name="orientation_frequency" value="100"/>
+		<param name="gps_enabled" value="true"/>
+		<param name="gps_frequency" value="20"/>
+		<param name="temperature_enabled" value="true"/>
+		<param name="temperature_frequency" value="20"/>
+		<param name="acceleration_enabled" value="true"/>
+		<param name="acceleration_frequency" value="100"/>
+		<param name="pressure_enabled" value="true"/>
+		<param name="pressure_frequency" value="20"/>
+		<param name="magnetic_enabled" value="true"/>
+		<param name="magnetic_frequency" value="20"/>
+		<param name="altitude_enabled" value="true"/>
+		<param name="altitude_frequency" value="20"/>
+		<param name="velocity_enabled" value="true"/>
+		<param name="velocity_frequency" value="100"/>
+		<param name="gyroscope_enabled" value="true"/>
+		<param name="gyroscope_frequency" value="100"/>
+	</node>
+</launch>

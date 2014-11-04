@@ -1,0 +1,41 @@
+//***********************************************************************//
+//  MessageMaker Class Header                                            //
+//  - fills different ROS messages with data from the sensor             //
+//  - Uses SensorData class															 //
+// Author: Lucas Casanova Nogueira 03.06.2014 							       //
+//***********************************************************************//
+
+#ifndef MESSAGE_MAKER
+#define MESSAGE_MAKER
+
+#include <ros/ros.h>
+#include <ros/console.h>
+#include <sensor_msgs/Imu.h>
+#include <sensor_msgs/NavSatFix.h>
+#include <sensor_msgs/Temperature.h>
+#include <sensor_msgs/MagneticField.h>
+#include <sensor_msgs/FluidPressure.h>
+#include <geometry_msgs/Twist.h>
+#include <geometry_msgs/TwistStamped.h>
+#include "receive_xsens/GpsInfo.h"
+
+#include "sensorData.h"
+
+class MessageMaker{
+
+private:
+  SensorData & data;
+  
+public:
+  MessageMaker(SensorData & data);
+  sensor_msgs::Imu fillImuMessage();
+  sensor_msgs::NavSatFix fillNavSatFixMessage();
+  geometry_msgs::TwistWithCovariance fillVelocityMessage();
+  sensor_msgs::Temperature fillTemperatureMessage();
+  sensor_msgs::FluidPressure fillPressureMessage();
+  sensor_msgs::MagneticField fillMagneticFieldMessage();
+  receive_xsens::GpsInfo fillGpsInfoMessage();	
+   
+};
+
+#endif
