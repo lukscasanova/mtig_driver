@@ -1,6 +1,6 @@
 <launch>
 	<arg name="frame" default="xsens" />
-	<node pkg="receive_xsens" type="receive_xsens_node" name="receive_xsens" respawn="true">
+	<node pkg="mtig_driver" type="mtig_driver_node" name="mtig_driver" respawn="true" />
 		<!-- Error parameters /-->		
 		<param name="roll_error" value="0.2" />
 		<param name="pitch_error" value="0.2" />		
