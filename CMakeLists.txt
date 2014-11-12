@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.4.6)
-project(receive_xsens)
+project(mtig_driver)
 
 find_package(catkin REQUIRED COMPONENTS 
 	roscpp 
@@ -64,5 +64,5 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 #target_link_libraries(${PROJECT_NAME} libxsensdeviceapi)
 
 #set(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} /opt/local/lib)
-add_executable(receive_xsens_node src/main.cpp src/console.cpp src/conio.c src/myxda.cpp src/serialkey.cpp src/mtiG.cpp src/messageMaker.cpp src/sensorData.cpp)
+add_executable(mtig_driver_node src/main.cpp src/console.cpp src/conio.c src/myxda.cpp src/serialkey.cpp src/mtiG.cpp src/messageMaker.cpp src/sensorData.cpp)
 target_link_libraries(receive_xsens_node m xsensdeviceapi xstypes pthread ${catkin_LIBRARIES})
