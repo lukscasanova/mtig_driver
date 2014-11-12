@@ -7,9 +7,11 @@
 
   </description>
   <author>Lucas</author>
-  <version>1.0</version>
+  <version>0.9.0</version>
   <maintainer email="lukscasanova@gmail.com"> Lucas Casanova Nogueira</maintainer>
   <license>BSD</license>
+  <url>http://www.ros.org/wiki/mtig_drivers
+</url>
 
 
   <buildtool_depend>catkin</buildtool_depend>  

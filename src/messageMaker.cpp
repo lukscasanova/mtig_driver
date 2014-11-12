@@ -189,12 +189,12 @@ sensor_msgs::MagneticField MessageMaker::fillMagneticFieldMessage(){
 }
 
 /**		
- * @brief Creates a custom receive_xsens/GpsInfo ROS message from sensor data  
+ * @brief Creates a custom mtig_driver/GpsInfo ROS message from sensor data  
  * @details This message contains important information from the Xsens' GPS
  * that no other ROS Message accounted for. 
  */
-receive_xsens::GpsInfo MessageMaker::fillGpsInfoMessage(){
-	receive_xsens::GpsInfo gps_info;
+mtig_driver::GpsInfo MessageMaker::fillGpsInfoMessage(){
+	mtig_driver::GpsInfo gps_info;
 	gps_info.header.frame_id = data.frameId();
 	gps_info.header.stamp = ros::Time::now();
 

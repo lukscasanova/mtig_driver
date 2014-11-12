@@ -65,4 +65,4 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
 #set(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} /opt/local/lib)
 add_executable(mtig_driver_node src/main.cpp src/console.cpp src/conio.c src/myxda.cpp src/serialkey.cpp src/mtiG.cpp src/messageMaker.cpp src/sensorData.cpp)
-target_link_libraries(receive_xsens_node m xsensdeviceapi xstypes pthread ${catkin_LIBRARIES})
+target_link_libraries(mtig_driver_node m xsensdeviceapi xstypes pthread ${catkin_LIBRARIES})

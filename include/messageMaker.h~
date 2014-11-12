@@ -1,9 +1,12 @@
-//***********************************************************************//
-//  MessageMaker Class Header                                            //
-//  - fills different ROS messages with data from the sensor             //
-//  - Uses SensorData class															 //
-// Author: Lucas Casanova Nogueira 03.06.2014 							       //
-//***********************************************************************//
+/**
+ * @class MessageMaker
+ * @brief Fills ROS messages with data from the sensor
+ * @details This class will be constantly used by mtiG in order to publish
+ *          ROS messages containing information about the Xsens device sensors
+ *          data.
+ * @author Lucas Casanova Nogueira (lucas_afonso@hotmail.com)
+ * @date 2014
+ */
 
 #ifndef MESSAGE_MAKER
 #define MESSAGE_MAKER
@@ -16,7 +19,7 @@
 #include <sensor_msgs/MagneticField.h>
 #include <sensor_msgs/FluidPressure.h>
 #include <geometry_msgs/Twist.h>
-#include <geometry_msgs/TwistStamped.h>
+#include <geometry_msgs/TwistWithCovariance.h>
 #include "receive_xsens/GpsInfo.h"
 
 #include "sensorData.h"

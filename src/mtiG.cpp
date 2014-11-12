@@ -293,23 +293,23 @@ void mtiG::advertise(){
 	int queue_size;
 	ros::param::param<int>("~queue_size", queue_size, 50);
 	if(mSettings.orientationData || mSettings.velocityData || mSettings.accelerationData){
-	  	imuPublisher = nh.advertise<sensor_msgs::Imu> ("xsens/imu/data",queue_size);
+	  	imuPublisher = nh.advertise<sensor_msgs::Imu> ("xsens/imu",queue_size);
 	}
 	if(mSettings.gpsData){
-		gpsPublisher = nh.advertise<sensor_msgs::NavSatFix> ("xsens/gps/data", queue_size);
-		gpsInfoPublisher = nh.advertise<receive_xsens::GpsInfo> ("xsens/gps/extra", queue_size);
+		gpsPublisher = nh.advertise<sensor_msgs::NavSatFix> ("xsens/gps_data", queue_size);
+		gpsInfoPublisher = nh.advertise<mtig_driver::GpsInfo> ("xsens/gps_extra", queue_size);
 	}
 	if(mSettings.velocityData){
-		velPublisher = nh.advertise<geometry_msgs::TwistWithCovariance> ("xsens/velocity/data", queue_size);
+		velPublisher = nh.advertise<geometry_msgs::TwistWithCovariance> ("xsens/velocity", queue_size);
 	}
 	if(mSettings.temperatureData){	
-		tempPublisher = nh.advertise<sensor_msgs::Temperature>("xsens/temperature/data", queue_size);
+		tempPublisher = nh.advertise<sensor_msgs::Temperature>("xsens/temperature", queue_size);
 	}
 	if(mSettings.magneticData){
-		magFieldPub = nh.advertise<sensor_msgs::MagneticField>("xsens/magnetic/data", queue_size);
+		magFieldPub = nh.advertise<sensor_msgs::MagneticField>("xsens/magnetic", queue_size);
 	}
 	if(mSettings.pressureData){	
-		pressurePublisher = nh.advertise<sensor_msgs::FluidPressure>("xsens/pressure/data", queue_size);
+		pressurePublisher = nh.advertise<sensor_msgs::FluidPressure>("xsens/pressure", queue_size);
 	}
 
 }
