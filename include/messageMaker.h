@@ -20,6 +20,7 @@
 #include <sensor_msgs/FluidPressure.h>
 #include <geometry_msgs/Twist.h>
 #include <geometry_msgs/TwistWithCovariance.h>
+#include <geometry_msgs/Vector3Stamped.h>
 #include "mtig_driver/GpsInfo.h"
 
 #include "sensorData.h"
@@ -37,7 +38,8 @@ public:
   sensor_msgs::Temperature fillTemperatureMessage();
   sensor_msgs::FluidPressure fillPressureMessage();
   sensor_msgs::MagneticField fillMagneticFieldMessage();
-  mtig_driver::GpsInfo fillGpsInfoMessage();	
+  mtig_driver::GpsInfo fillGpsInfoMessage();
+  geometry_msgs::Vector3Stamped fillRPYMessage();
    
 };
 

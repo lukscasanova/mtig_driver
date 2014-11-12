@@ -188,6 +188,18 @@ sensor_msgs::MagneticField MessageMaker::fillMagneticFieldMessage(){
 	return magneticData;
 }
 
+geometry_msgs::Vector3Stamped MessageMaker::fillRPYMessage(){
+	geometry_msgs::Vector3Stamped rpyData;
+	rpyData.header.frame_id = data.frameId();
+	rpyData.header.stamp = ros::Time::now();
+	
+	rpyData.vector.x = data.roll();
+	rpyData.vector.y = data.pitch();
+	rpyData.vector.z = data.yaw();
+	
+	return rpyData;
+}
+
 /**		
  * @brief Creates a custom mtig_driver/GpsInfo ROS message from sensor data  
  * @details This message contains important information from the Xsens' GPS
