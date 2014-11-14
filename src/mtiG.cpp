@@ -294,6 +294,7 @@ void mtiG::advertise(){
 	ros::param::param<int>("~queue_size", queue_size, 50);
 	if(mSettings.orientationData || mSettings.velocityData || mSettings.accelerationData){
 	  	imuPublisher = nh.advertise<sensor_msgs::Imu> ("xsens/imu",queue_size);
+		rpyPublisher = nh.advertise<geometry_msgs::Vector3> ("xsens/rpy", queue_size);
 	}
 	if(mSettings.gpsData){
 		gpsPublisher = nh.advertise<sensor_msgs::NavSatFix> ("xsens/gps_data", queue_size);
@@ -321,6 +322,9 @@ void mtiG::advertise(){
 void mtiG::publish(){
 	if(mSettings.orientationData || mSettings.velocityData || mSettings.accelerationData){
 		imuPublisher.publish( messageMaker->fillImuMessage() );
+	}
+	if(mSettings.orientationData){
+		rpyPublisher.publish( messageMaker->fillRPYMessage() );
 	}
 	if(mSettings.gpsData){
 		gpsPublisher.publish( messageMaker->fillNavSatFixMessage() );

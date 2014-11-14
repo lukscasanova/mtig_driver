@@ -55,6 +55,7 @@ class mtiG{
 	ros::Publisher magFieldPub;
 	ros::Publisher pressurePublisher;
 	ros::Publisher gpsInfoPublisher;
+	ros::Publisher rpyPublisher;
 		
 
 	void printSettings();
