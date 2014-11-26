@@ -123,10 +123,18 @@ geometry_msgs::TwistWithCovariance MessageMaker::fillVelocityMessage(){
 	} 
 	res.covariance[0]=res.covariance[7]=res.covariance[14]=0.001;
 	res.covariance[21]=res.covariance[28]=res.covariance[35]=0.01;
-
-	velocityData.angular.x = data.gyroscope_x();
-	velocityData.angular.y = data.gyroscope_y();
-	velocityData.angular.z = data.gyroscope_z();
+	//conversion of angular velocity to ENU frame of reference
+	tf::Quaternion oq;
+	data.getOrientationQuaternion(&oq);
+	
+	tf::Quaternion local_w(data.gyroscope_x(), data.gyroscope_y(), data.gyroscope_z(), 1.0);
+	tf::Quaternion global_w = oq * local_w * oq.inverse();
+	//RPY in ENU frame
+	double groll, gpitch, gyaw;
+	tf::Matrix3x3(global_w).getRPY(groll,gpitch, gyaw);
+	velocityData.angular.x = groll;
+	velocityData.angular.y = gpitch;
+	velocityData.angular.z = gyaw;
 
 	velocityData.linear.x = data.velocity_x();
 	velocityData.linear.y = data.velocity_y();

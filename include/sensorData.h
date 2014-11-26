@@ -10,6 +10,7 @@
 #ifndef SENSOR_DATA
 #define SENSOR_DATA
 #include "global.h"
+#include <tf/tf.h>
 
 //[Manual] http://amtechs.co.jp/2_gps/pdf/MTi%20User%20Manual.pdf
 
@@ -28,7 +29,9 @@ private:
 	float roll_error, pitch_error, yaw_error;
 	float acc_noise, gyr_noise;
     	unsigned int ts;
+	tf::Quaternion q_orientation;
 
+	
 	float m_hdop, m_vdop, m_gdop, m_pdop, m_tdop, m_ndop, m_edop, m_itow;
 	float mPositionAccuracy, mSpeedAccuracy;
 	int mSatelliteNumber, mGpsFixStatus;
@@ -64,7 +67,9 @@ public:
 	float calculateAccErrorSquared(float noise_density, float freq);
 	float calculateGyrErrorSquared(float noise_density, float freq);
 
-
+	void getOrientationQuaternion(tf::Quaternion * q){
+	    *q = tf::Quaternion(q1, q2, q3, q0);
+	}
 
 	float PositionAccuracy() { return mPositionAccuracy; }
 	float SpeedAccuracy() { return mSpeedAccuracy; }
@@ -75,11 +80,11 @@ public:
 	float accelerometer_x() { return accX; }
 	float accelerometer_y() { return accY; }
 	float accelerometer_z() { return accZ; }
-
+	//frame local
 	float gyroscope_x() { return gyrX; }
 	float gyroscope_y() { return gyrY; }
 	float gyroscope_z() { return gyrZ; }
-
+	
 	float magnetic_x() { return magX; } 
 	float magnetic_y() { return magY; }
 	float magnetic_z() { return magZ; }
@@ -87,10 +92,10 @@ public:
 	float temperature() { return mTemperature; }
 	float pressure() { return mPressure; }
 
-	float quaternion_x() { return q0; }
-	float quaternion_y() { return q1; }
-	float quaternion_z() { return q2; }
-	float quaternion_w() { return q3; }
+	float quaternion_x() { return q1; }
+	float quaternion_y() { return q2; }
+	float quaternion_z() { return q3; }
+	float quaternion_w() { return q0; }
 
 	float roll() { return eroll; }
 	float pitch() { return epitch; }
@@ -99,7 +104,8 @@ public:
 	float altitude() { return mAltitude; }
 	float longitude() { return mLongitude; }
 	float latitude() { return mLatitude; }
-
+	
+	//frame local
 	float velocity_x() { return mVelocityX; }
 	float velocity_y() { return mVelocityY; }
 	float velocity_z() { return mVelocityZ; }

@@ -5,6 +5,7 @@ find_package(catkin REQUIRED COMPONENTS
 	roscpp 
 	std_msgs 
 	message_generation
+	tf
 )
 
 add_message_files(
@@ -21,7 +22,7 @@ generate_messages(
 catkin_package(
 			INCLUDE_DIRS include			
 			LIBRARIES ${PROJECT_NAME}
-			CATKIN_DEPENDS roscpp
+			CATKIN_DEPENDS roscpp tf
 			DEPENDS message_runtime
 )
 

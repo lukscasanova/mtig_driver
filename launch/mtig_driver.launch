@@ -1,6 +1,6 @@
 <launch>
 	<arg name="frame" default="xsens" />
-	<node pkg="mtig_driver" type="mtig_driver_node" name="mtig_driver" respawn="true" />
+	<node pkg="mtig_driver" type="mtig_driver_node" name="mtig_driver" respawn="true" >
 		<!-- Error parameters /-->		
 		<param name="roll_error" value="0.2" />
 		<param name="pitch_error" value="0.2" />		
@@ -9,7 +9,9 @@
 		<param name="gyr_noise" value="0.01" />
 	
 		<!-- Frame Parameter /-->
-		<param name="frame_id" value="$(arg frame)" />		
+		<param name="frame_id" value="$(arg frame)" />	
+		
+		<param name="override" value="true"/>
 
 		<!-- Module Setup Parameters /-->
 		<param name="orientation_enabled" value="true"/>

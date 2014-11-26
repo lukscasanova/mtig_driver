@@ -27,6 +27,7 @@ SensorData::SensorData(	outputSettings  & mSettings){
 	mAltitude = mLongitude = mLatitude = 0.0;
 	mVelocityNorth = mVelocityEast = mVelocityDown = 0.0;
 	
+	
 
 	//Get measurements errors from the launchfile. They should be already ^2 because they'll go straight to the covariance matrix
 	if(ros::param::get("~roll_error", roll_error)){
@@ -111,10 +112,10 @@ void SensorData::fillData(XsDataPacket * _packet){
 		if (packet.containsOrientation()) {
 			XsQuaternion quaternion = packet.orientationQuaternion();
 
- 			q0 = quaternion.m_x;
-			q1 = quaternion.m_y;
-			q2 = quaternion.m_z;
-			q3 = quaternion.m_w;
+ 			q1 = quaternion.m_x;
+			q2 = quaternion.m_y;
+			q3 = quaternion.m_z;
+			q0 = quaternion.m_w;
 						
 			XsEuler euler = packet.orientationEuler();
 			eroll = euler.m_roll;
@@ -198,7 +199,7 @@ void SensorData::fillData(XsDataPacket * _packet){
 			mVelocityY = velocity.at(1);
 			mVelocityZ = velocity.at(2);
 
-			ROS_INFO_STREAM_THROTTLE(THROTTLE_VALUE, " Velocity [ x (east) : " << mVelocityX << ", y (north) : "
+			ROS_INFO_STREAM(" Velocity [ x (east) : " << mVelocityX << ", y (north) : "
 					<< mVelocityY << ", z (up) " << mVelocityZ << " ]");
 		}
 
