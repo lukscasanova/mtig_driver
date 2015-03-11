@@ -39,6 +39,7 @@ private:
 	float mAltitude, mLongitude, mLatitude;
 	float mVelocityNorth, mVelocityEast, mVelocityDown;
 	float mVelocityX, mVelocityY, mVelocityZ;
+	float gpsVelocityX, gpsVelocityY, gpsVelocityZ;
 	unsigned char mStatus;
 	uint32_t mHorizontalAccuracy, mVerticalAccuracy;
 	std::string frameId_string;
@@ -109,6 +110,11 @@ public:
 	float velocity_x() { return mVelocityX; }
 	float velocity_y() { return mVelocityY; }
 	float velocity_z() { return mVelocityZ; }
+	
+	//Velocidade do GPS - RawGpsSol
+	float gps_velocity_x() { return gpsVelocityX; }
+	float gps_velocity_y() { return gpsVelocityY; }
+	float gps_velocity_z() { return gpsVelocityZ; }
 		
 	float velocityNorth() { return mVelocityNorth; }
 	float velocityEast() { return mVelocityEast; }

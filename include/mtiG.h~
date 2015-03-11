@@ -50,13 +50,11 @@ class mtiG{
 	//Publishers
 	ros::Publisher imuPublisher;
 	ros::Publisher gpsPublisher;
-	ros::Publisher velPublisher;
-	ros::Publisher gpsVelPublisher;
+	ros::Publisher velPublisher; 
 	ros::Publisher tempPublisher;
 	ros::Publisher magFieldPub;
 	ros::Publisher pressurePublisher;
 	ros::Publisher gpsInfoPublisher;
-	ros::Publisher rpyPublisher;
 		
 
 	void printSettings();

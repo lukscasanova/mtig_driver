@@ -22,6 +22,7 @@ SensorData::SensorData(	outputSettings  & mSettings){
 	eroll = epitch = eyaw = 0.0;
 	mTemperature = mPressure = 0.0;
 	mVelocityX = mVelocityY = mVelocityZ = 0.0;
+	gpsVelocityX = gpsVelocityY = gpsVelocityZ = 0.0;
 	mStatus = 0;
 	mHorizontalAccuracy = mVerticalAccuracy = 0;
 	mAltitude = mLongitude = mLatitude = 0.0;
@@ -276,6 +277,9 @@ void SensorData::fillData(XsDataPacket * _packet){
 			mSatelliteNumber = sol.m_numsv;
 			mGpsFixStatus = sol.m_gpsfix;
 			
+			gpsVelocityX=sol.m_ecef_vx/100;
+			gpsVelocityY=sol.m_ecef_vy/100;
+			gpsVelocityZ=sol.m_ecef_vz/100;
 			ROS_INFO_STREAM_THROTTLE(THROTTLE_VALUE,
 						"Pos Acc = " << mPositionAccuracy <<
 						",Speed Acc = " << mSpeedAccuracy <<

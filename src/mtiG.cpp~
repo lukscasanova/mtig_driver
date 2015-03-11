@@ -294,15 +294,13 @@ void mtiG::advertise(){
 	ros::param::param<int>("~queue_size", queue_size, 50);
 	if(mSettings.orientationData || mSettings.velocityData || mSettings.accelerationData){
 	  	imuPublisher = nh.advertise<sensor_msgs::Imu> ("xsens/imu",queue_size);
-		rpyPublisher = nh.advertise<geometry_msgs::Vector3Stamped> ("xsens/rpy", queue_size);
 	}
 	if(mSettings.gpsData){
 		gpsPublisher = nh.advertise<sensor_msgs::NavSatFix> ("xsens/gps_data", queue_size);
 		gpsInfoPublisher = nh.advertise<mtig_driver::GpsInfo> ("xsens/gps_extra", queue_size);
 	}
 	if(mSettings.velocityData){
-		velPublisher = nh.advertise<geometry_msgs::TwistWithCovarianceStamped> ("xsens/velocity", queue_size);
-		gpsVelPublisher = nh.advertise<geometry_msgs::TwistWithCovarianceStamped> ("xsens/gps_vel", queue_size);
+		velPublisher = nh.advertise<geometry_msgs::TwistWithCovariance> ("xsens/velocity", queue_size);
 	}
 	if(mSettings.temperatureData){	
 		tempPublisher = nh.advertise<sensor_msgs::Temperature>("xsens/temperature", queue_size);
@@ -324,16 +322,12 @@ void mtiG::publish(){
 	if(mSettings.orientationData || mSettings.velocityData || mSettings.accelerationData){
 		imuPublisher.publish( messageMaker->fillImuMessage() );
 	}
-	if(mSettings.orientationData){
-		rpyPublisher.publish( messageMaker->fillRPYMessage() );
-	}
 	if(mSettings.gpsData){
 		gpsPublisher.publish( messageMaker->fillNavSatFixMessage() );
 		gpsInfoPublisher.publish ( messageMaker->fillGpsInfoMessage() );
 	}
 	if(mSettings.velocityData){
 		velPublisher.publish( messageMaker->fillVelocityMessage() );
-		gpsVelPublisher.publish( messageMaker->fillGpsVelocityMessage() );
 	}
 	if(mSettings.temperatureData){	
 		tempPublisher.publish( messageMaker->fillTemperatureMessage() );

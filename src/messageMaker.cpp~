@@ -115,73 +115,28 @@ sensor_msgs::NavSatFix MessageMaker::fillNavSatFixMessage(){
  * @details Publishes angular and linear speed information in the ENU frame of reference.
  * The data is collected from the device's gyroscopes and GPS
  */
-geometry_msgs::TwistWithCovarianceStamped MessageMaker::fillVelocityMessage(){
-	geometry_msgs::TwistWithCovarianceStamped stamped;
-	geometry_msgs::TwistWithCovariance res;
+geometry_msgs::TwistWithCovariance MessageMaker::fillVelocityMessage(){
+	geometry_msgs::TwistWithCovariance res;	
 	geometry_msgs::Twist velocityData;
 	for(int i=0;i<36;i++){
 		res.covariance[i]=0.0;
 	} 
 	res.covariance[0]=res.covariance[7]=res.covariance[14]=0.001;
 	res.covariance[21]=res.covariance[28]=res.covariance[35]=0.01;
-	//conversion of angular velocity to ENU frame of reference
-	tf::Quaternion oq;
-	data.getOrientationQuaternion(&oq);
-	
-	tf::Quaternion local_w(data.gyroscope_x(), data.gyroscope_y(), data.gyroscope_z(), 1.0);
-	tf::Quaternion global_w = oq * local_w * oq.inverse();
-	//RPY in ENU frame
-	double groll, gpitch, gyaw;
-	tf::Matrix3x3(global_w).getRPY(groll,gpitch, gyaw);
-	velocityData.angular.x = groll;
-	velocityData.angular.y = gpitch;
-	velocityData.angular.z = gyaw;
+
+	velocityData.angular.x = data.gyroscope_x();
+	velocityData.angular.y = data.gyroscope_y();
+	velocityData.angular.z = data.gyroscope_z();
 
 	velocityData.linear.x = data.velocity_x();
 	velocityData.linear.y = data.velocity_y();
 	velocityData.linear.z = data.velocity_z();
 	res.twist=velocityData;
 
-	stamped.header.frame_id = data.frameId();
-	stamped.header.stamp = ros::Time::now();
-	return stamped;
+	return res;
 
 
 }
-
-
-/**
- * @brief Creates a geometry_msgs/Twist ROS message from sensor data
- * @details Publishes angular and linear speed information in the ENU frame of reference.
- * The data is collected from the device's gyroscopes and GPS
- */
-geometry_msgs::TwistWithCovarianceStamped MessageMaker::fillGpsVelocityMessage(){
-	geometry_msgs::TwistWithCovarianceStamped stamped;
-	geometry_msgs::TwistWithCovariance res;
-	geometry_msgs::Twist velocityData;
-	for(int i=0;i<36;i++){
-		res.covariance[i]=0.0;
-	} 
-	res.covariance[0]=res.covariance[7]=res.covariance[14]=0.001;
-	res.covariance[21]=res.covariance[28]=res.covariance[35]=0.01;
-	//conversion of angular velocity to ENU frame of reference
-	
-	velocityData.angular.x = 0.0;
-	velocityData.angular.y = 0.0;
-	velocityData.angular.z = 0.0;
-
-	velocityData.linear.x = data.gps_velocity_x();
-	velocityData.linear.y = data.gps_velocity_y();
-	velocityData.linear.z = data.gps_velocity_z();
-	res.twist=velocityData;
-
-	stamped.header.frame_id = data.frameId();
-	stamped.header.stamp = ros::Time::now();
-	return stamped;
-
-
-}
-
 
 /**
  * @brief Creates a sensor_msgs/Temperature ROS message from sensor data
@@ -236,7 +191,7 @@ sensor_msgs::MagneticField MessageMaker::fillMagneticFieldMessage(){
 geometry_msgs::Vector3Stamped MessageMaker::fillRPYMessage(){
 	geometry_msgs::Vector3Stamped rpyData;
 	rpyData.header.frame_id = data.frameId();
-	rpyData.header.stamp = ros::Time::now();
+	rpyData.header.stamp = ros::Time:now();
 	
 	rpyData.vector.x = data.roll();
 	rpyData.vector.y = data.pitch();
