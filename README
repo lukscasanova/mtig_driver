@@ -8,8 +8,8 @@ Here is the software website: http://www.xsens.com/en/mt-software-suite
   2) Follow the instructions in the MT SDK for Linux to install the software and make sure the examples run correctly with the sensor. Here is a summary of the installation procedure.
 
     (a) Unpack the MT SDK.
-    (b) Go to /shared_object folder, put the license number in the “serialkey.h” file, then “make” and “sudo make system_install”.
-    (c) Connect the sensor to the Linux machine and run one of the examples in /shared_object folder.
+    (b) Run installer: ./mtsdk_linux_4.3.sh
+    (c) Examples here: /usr/local/xsens/examples/mtsdk
 
   (3) Connect the sensor to the Windows machine and open the MT Manager. Click the button on top of the screen for “output configuration options”, make sure “Turn Rate” and “Acceleration” are checked. You can also change frequency on the same page. If you skip this step, the sensor is configured to give orientation only by default.
 

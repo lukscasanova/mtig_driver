@@ -154,7 +154,7 @@ int main(int argc, char** argv)
 
 		// Find an MTi / MTx / MTmk4 device
 		XsPortInfoArray::const_iterator mtPort = portInfoArray.begin();
-		while (mtPort != portInfoArray.end() && !mtPort->deviceId().isMtix() && !mtPort->deviceId().isMtMk4()) {++mtPort;}
+		while (mtPort != portInfoArray.end() && !mtPort->deviceId().isMtx() && !mtPort->deviceId().isMtMk4()) {++mtPort;}
 		if (mtPort == portInfoArray.end())
 		{
 			throw std::runtime_error("No MTi / MTx / MTmk4 device found. Aborting.");

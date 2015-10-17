@@ -15,7 +15,7 @@ and is intended for use only by Xsens Technologies BV and
 #define SERIALKEY_H
 
 // enter your MT SDK serial key here:
-#define SERIAL_KEY	"MFWE-PK27-NX3K-05NX-0PKT"
+#define SERIAL_KEY	"enter your MT SDK serial key here"
 
 #ifdef __cplusplus
 extern "C"

@@ -40,7 +40,11 @@ catkin_package(
 #set(ROS_BUILD_TYPE RelWithDebInfo)
 
 include_directories(include ${catkin_INCLUDE_DIRS}
-  include/${PROJECT_NAME})
+  include/${PROJECT_NAME}
+  /usr/local/xsens/include
+)
+
+link_directories( /usr/local/xsens/lib )
 
 #set the default path for built executables to the "bin" directory
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
