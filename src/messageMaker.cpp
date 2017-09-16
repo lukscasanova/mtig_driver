@@ -117,8 +117,8 @@ sensor_msgs::NavSatFix MessageMaker::fillNavSatFixMessage(){
  */
 geometry_msgs::TwistWithCovarianceStamped MessageMaker::fillVelocityMessage(){
 	geometry_msgs::TwistWithCovarianceStamped stamped;
-	geometry_msgs::TwistWithCovariance res;
-	geometry_msgs::Twist velocityData;
+	geometry_msgs::TwistWithCovariance& res = stamped.twist;
+	geometry_msgs::Twist& velocityData = res.twist;
 	for(int i=0;i<36;i++){
 		res.covariance[i]=0.0;
 	} 
@@ -157,8 +157,8 @@ geometry_msgs::TwistWithCovarianceStamped MessageMaker::fillVelocityMessage(){
  */
 geometry_msgs::TwistWithCovarianceStamped MessageMaker::fillGpsVelocityMessage(){
 	geometry_msgs::TwistWithCovarianceStamped stamped;
-	geometry_msgs::TwistWithCovariance res;
-	geometry_msgs::Twist velocityData;
+	geometry_msgs::TwistWithCovariance& res = stamped.twist;
+	geometry_msgs::Twist& velocityData = res.twist;
 	for(int i=0;i<36;i++){
 		res.covariance[i]=0.0;
 	} 
