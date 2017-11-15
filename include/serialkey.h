@@ -15,7 +15,7 @@ and is intended for use only by Xsens Technologies BV and
 #define SERIALKEY_H
 
 // enter your MT SDK serial key here:
-#define SERIAL_KEY	"enter your MT SDK serial key here"
+#define SERIAL_KEY	"DT3P-FB8X-6LGJ-XF7G-6C7B"
 
 #ifdef __cplusplus
 extern "C"
