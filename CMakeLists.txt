@@ -31,7 +31,7 @@ include_directories(include
 #  	/usr/local/xsens/include
 )
 
-link_directories( /usr/local/xsens/lib )
+link_directories( /usr/local/lib )
 
 #set the default path for built executables to the "bin" directory
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
