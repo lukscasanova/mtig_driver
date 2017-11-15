@@ -8,7 +8,7 @@
  * @date 2014
  */
 
-#include "sensorData.h"
+#include <sensorData.h>
 
 /**
  * @brief Initializes all data with blank values 

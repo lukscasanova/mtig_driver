@@ -9,7 +9,7 @@
  */
 #ifndef SENSOR_DATA
 #define SENSOR_DATA
-#include "global.h"
+#include <global.h>
 #include <tf/tf.h>
 
 //[Manual] http://amtechs.co.jp/2_gps/pdf/MTi%20User%20Manual.pdf

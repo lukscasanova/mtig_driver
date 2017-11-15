@@ -23,9 +23,9 @@
 #include <geometry_msgs/TwistWithCovarianceStamped.h>
 #include <geometry_msgs/Vector3Stamped.h>
 #include <tf/tf.h>
-#include "mtig_driver/GpsInfo.h"
+#include <mtig_driver/GpsInfo.h>
 
-#include "sensorData.h"
+#include <sensorData.h>
 
 class MessageMaker{
 
