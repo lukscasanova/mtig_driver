@@ -20,26 +20,17 @@
 #include <getopt.h>
 #include <string>
 
-
 #include <sensorData.h>
 #include <messageMaker.h>
 
-
-
 #define THROTTLE_VALUE 10
 #define FRAME_ID_STRING "xsens"
-
-
-
-
 // Frame Id used in message headers
 
 class mtiG{     
 	private:	 
-	int override;
+	int override_settings;
 	
-
-
 	XsDevice * device;
 	MessageMaker * messageMaker;
 	SensorData sensorData;

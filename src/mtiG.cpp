@@ -35,11 +35,10 @@
  */
 mtiG::mtiG(XsDevice * _device, int argc, char ** argv):device(_device){
 
-	ros::param::get("~override", override);
+	ros::param::get("~override", override_settings);
 	parseOptions(argc, argv);
 
-
-	if(override){
+	if(override_settings){
 		//configures Xsensor device with mSettings
 		ROS_DEBUG("OVERRIDE MODE");
 		configure();
@@ -49,7 +48,7 @@ mtiG::mtiG(XsDevice * _device, int argc, char ** argv):device(_device){
 	}
 	readSettings();
 	printSettings();
-	sensorData=SensorData(mSettings);
+	sensorData = SensorData(mSettings);
 	messageMaker = new MessageMaker(sensorData);
 	// Advertise all messages published in this node, uses mSettings
 	advertise();

@@ -103,7 +103,7 @@ float SensorData::calculateGyrErrorSquared(float noise_density, float freq){
  */
 void SensorData::fillData(XsDataPacket * _packet){
 		XsDataPacket packet = *_packet;
-		XsMessage msg = packet.originalMessage();
+		XsMessage msg = packet.toMessage();
 		XsSize msg_size = msg.getDataSize();
 
 		ROS_INFO_STREAM_THROTTLE(THROTTLE_VALUE, "Data Size: " << msg_size);
@@ -113,19 +113,19 @@ void SensorData::fillData(XsDataPacket * _packet){
 		if (packet.containsOrientation()) {
 			XsQuaternion quaternion = packet.orientationQuaternion();
 
- 			q1 = quaternion.m_x;
-			q2 = quaternion.m_y;
-			q3 = quaternion.m_z;
-			q0 = quaternion.m_w;
+ 			q1 = quaternion.x();
+			q2 = quaternion.y();
+			q3 = quaternion.z();
+			q0 = quaternion.w();
 						
 			XsEuler euler = packet.orientationEuler();
-			eroll = euler.m_roll;
-			epitch = euler.m_pitch;
-			eyaw = euler.m_yaw;
+			eroll = euler.roll();
+			epitch = euler.pitch();
+			eyaw = euler.yaw();
  			
-			ROS_INFO_STREAM_THROTTLE(THROTTLE_VALUE,"Orientation: Roll:" << std::setw(7) << std::fixed << std::setprecision(2) << euler.m_roll
-							  << ", Pitch:" << std::setw(7) << std::fixed << std::setprecision(2) << euler.m_pitch
-							  << ", Yaw:" << std::setw(7) << std::fixed << std::setprecision(2) << euler.m_yaw);
+			// ROS_INFO_STREAM_THROTTLE(THROTTLE_VALUE,"Orientation: Roll:" << std::setw(7) << std::fixed << std::setprecision(2) << euler.m_roll
+			// 				  << ", Pitch:" << std::setw(7) << std::fixed << std::setprecision(2) << euler.m_pitch
+			// 				  << ", Yaw:" << std::setw(7) << std::fixed << std::setprecision(2) << euler.m_yaw);
 						
 		}
 
@@ -219,7 +219,7 @@ void SensorData::fillData(XsDataPacket * _packet){
 		if(packet.containsRawData() ){ ROS_INFO_THROTTLE(THROTTLE_VALUE, "RawData");}
 		if(packet.containsCalibratedData() ){ ROS_INFO_THROTTLE(THROTTLE_VALUE, "Calib Data");}
 		if(packet.containsSdiData() ){ ROS_INFO_THROTTLE(THROTTLE_VALUE, "SDI");}
-		if(packet.containsStatusByte() ){ ROS_INFO_THROTTLE(THROTTLE_VALUE, "StatusByte");}
+		if(packet.containsStatus() ){ ROS_INFO_THROTTLE(THROTTLE_VALUE, "StatusByte");}
 		if(packet.containsDetailedStatus() ){ ROS_INFO_THROTTLE(THROTTLE_VALUE, "DetailedStatus");}
 		if(packet.containsPacketCounter8() ){ ROS_INFO_THROTTLE(THROTTLE_VALUE, "PacketCounter8");}
 		if(packet.containsPacketCounter() ){ ROS_INFO_THROTTLE(THROTTLE_VALUE, "PacketCounter");}

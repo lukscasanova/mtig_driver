@@ -137,7 +137,7 @@ void MyXda::onDataAvailable(XsDevice*, const XsDataPacket* packet)
 
 						//Getting Euler angles
 						XsEuler oriEuler = packet->orientationEuler();
-						printf("roll: % 4.3f\t pitch: % 4.3f\t yaw: % 4.3f              ", oriEuler.m_roll, oriEuler.m_pitch, oriEuler.m_yaw);
+						// printf("roll: % 4.3f\t pitch: % 4.3f\t yaw: % 4.3f              ", oriEuler.m_roll, oriEuler.m_pitch, oriEuler.m_yaw);
 					} break;
 
 					case DM_OrientationQuaternion:
@@ -147,7 +147,7 @@ void MyXda::onDataAvailable(XsDevice*, const XsDataPacket* packet)
 
 						//Getting quaternions
 						XsQuaternion oriQuat = packet->orientationQuaternion();
-						printf("w: % 3.3f x: % 3.3f y: % 3.3f z: % 3.3f", oriQuat.m_w, oriQuat.m_x, oriQuat.m_y, oriQuat.m_z);
+						// printf("w: % 3.3f x: % 3.3f y: % 3.3f z: % 3.3f", oriQuat.w(), oriQuat.x(), oriQuat.y(), oriQuat.z());
 					} break;
 
 					case DM_Sdi:

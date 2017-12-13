@@ -32,43 +32,44 @@
 extern "C"
 int setSerialKey()
 {
-	if (strcmp(SERIAL_KEY, "enter serial key here") == 0)
-	{
-		{
-			char serialKey[256];
-			FILE* fp;
-			memset(serialKey, 0, 256);
-			fp = fopen("serial.key", "r");
-			if (fp)
-			{
-				size_t result = fread(serialKey, 1, SERIAL_KEY_SIZE, fp);
-				fclose(fp);
+	// if (strcmp(SERIAL_KEY, "enter serial key here") == 0)
+	// {
+	// 	{
+	// 		char serialKey[256];
+	// 		FILE* fp;
+	// 		memset(serialKey, 0, 256);
+	// 		fp = fopen("serial.key", "r");
+	// 		if (fp)
+	// 		{
+	// 			size_t result = fread(serialKey, 1, SERIAL_KEY_SIZE, fp);
+	// 			fclose(fp);
 
-				if (result == SERIAL_KEY_SIZE)
-				{           
-                    if (XsControl::setSerialKey(serialKey))
-                        return 1;
-                }
-			}
-		}
+	// 			if (result == SERIAL_KEY_SIZE)
+	// 			{           
+ //                    if (XsControl::setSerialKey(serialKey))
+ //                        return 1;
+ //                }
+	// 		}
+	// 	}
 
-		// ask for serial key
-		std::cout << "Please enter valid serial key" << std::endl;
-		std::cout << "If you built this example yourself you can enter the key in \"serialkey.h\"" << std::endl;
-		char serialKey[256];
-		std::cin.getline(serialKey, 256);
-		XsString serial(serialKey);
+	// 	// ask for serial key
+	// 	std::cout << "Please enter valid serial key" << std::endl;
+	// 	std::cout << "If you built this example yourself you can enter the key in \"serialkey.h\"" << std::endl;
+	// 	char serialKey[256];
+	// 	std::cin.getline(serialKey, 256);
+	// 	XsString serial(serialKey);
 		
-		if (XsControl::setSerialKey(serial))
-		{
-			// store it
-			FILE* fp = fopen("serial.key", "w");
-			fwrite(serial.c_str(), sizeof(char), serial.size(), fp);
-			fclose(fp);
-			return 1;
-		}
-		return 0;
-	}
-	return XsControl::setSerialKey(SERIAL_KEY);
+	// 	if (XsControl::setSerialKey(serial))
+	// 	{
+	// 		// store it
+	// 		FILE* fp = fopen("serial.key", "w");
+	// 		fwrite(serial.c_str(), sizeof(char), serial.size(), fp);
+	// 		fclose(fp);
+	// 		return 1;
+	// 	}
+	// 	return 0;
+	// }
+	// return XsControl::setSerialKey(SERIAL_KEY);
+	return 1;
 }
 

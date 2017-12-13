@@ -28,10 +28,10 @@ catkin_package(
 
 include_directories(include 
 	${catkin_INCLUDE_DIRS}
-#  	/usr/local/xsens/include
+	/usr/local/xsens/include
 )
 
-link_directories( /usr/local/lib )
+link_directories( /usr/local/xsens/lib )
 
 #set the default path for built executables to the "bin" directory
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
