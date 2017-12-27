@@ -22,13 +22,13 @@ private:
 	float acc_error;
 	float gyrX, gyrY, gyrZ;
 	float gyr_error; // covariance matrix associated with angular velocity of IMU, error from [Manual], page 11
-    	float magX, magY, magZ;
-    	float mTemperature, mPressure;
-    	float q0, q1, q2, q3;
-    	float eroll, epitch, eyaw;
+	float magX, magY, magZ;
+	float mTemperature, mPressure;
+	float q0, q1, q2, q3;
+	float eroll, epitch, eyaw;
 	float roll_error, pitch_error, yaw_error;
 	float acc_noise, gyr_noise;
-    	unsigned int ts;
+	unsigned int ts;
 	tf::Quaternion q_orientation;
 
 	

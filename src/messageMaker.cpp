@@ -97,7 +97,7 @@ sensor_msgs::NavSatFix MessageMaker::fillNavSatFixMessage(){
 	gpsData.position_covariance[8]= (data.vdop() * data.PositionAccuracy()/100) * (data.vdop() * data.PositionAccuracy()/100);
 
 	//Status comes from status word of the sensor, no augmentation at this step
-	if(data.GpsFixStatus()==4){
+	if(data.GpsFixStatus()>0){
 		status_msg.status = sensor_msgs::NavSatStatus::STATUS_FIX;
 	}
 	else{
